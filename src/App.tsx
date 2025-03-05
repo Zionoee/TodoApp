@@ -1,8 +1,7 @@
 
 import { Header } from "./layouts/header"
 import { SideBar } from "./layouts/sideBar"
-import { useDispatch, useSelector } from "react-redux"
-import { sideBarActions } from "./store/StateSlices"
+import { useSelector } from "react-redux"
 import { Todo } from "./pages/Todo/Todo"
 
 
