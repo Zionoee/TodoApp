@@ -5,11 +5,6 @@ import { AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { TodoActions } from "../../store/StateSlices";
 
-type TodoDataProp = {
-  data: { Title: string; Description: string };
-  DateCreated: string;
-  TimeCreated: string;
-};
 export const Todo = () => {
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const TodoData = useSelector((store: any) => store.TodoState.value);

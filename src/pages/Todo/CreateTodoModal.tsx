@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import React, { SetStateAction,useEffect,useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { SetStateAction,useState } from "react";
+import { useDispatch,  } from "react-redux";
 import { TodoActions } from "../../store/StateSlices";
 
 type TodoModalProp = {
@@ -9,7 +9,7 @@ type TodoModalProp = {
 };
 export const TodoModal = (props: TodoModalProp) => {
     const [tempTodoStore, setTempTodoStore] = useState<{Title:string, Description:string}>({Title:"", Description: ""})
-     const TodoData = useSelector((store:any)=>store.TodoState)
+    //  const TodoData = useSelector((store:any)=>store.TodoState)
     const dispatch = useDispatch()
     const {StoreTodo} = TodoActions
   const { modalIsOpen, setModalIsOpen } = props;

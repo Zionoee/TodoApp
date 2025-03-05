@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 type finalType = {
   value : values[],
-  selectedTodo: values | undefined
+  selectedTodo: values 
 }
 type values = {
   data?: {Title?:string, Description?: string}
   DateCreated?: string,
   TimeCreated?: string,
-  Id: string
+  Id?: string
 }
 
  export const sideBarSlice = createSlice({
@@ -42,7 +42,7 @@ export const themeSlice = createSlice({
         // }
     } 
 })
-const initialState : finalType = { value: [], selectedTodo: undefined}
+const initialState : finalType = { value: [], selectedTodo: {}}
 const Day = ["Sunday", "Monday", "TuesDay", "Wednesday", "Thursday", "Friday", "Saturday"]
 const monthName =["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 const date = new Date()
@@ -83,7 +83,7 @@ export const TodoSlice = createSlice({
       // localStorage.setItem("Todo", JSON.stringify(state)) 
   },
   setSelectedTodoNull : (state)=>{
-  state.selectedTodo = undefined
+  state.selectedTodo = {}
   },
   SelectTodo : (state, action)=>{
  state.selectedTodo = action.payload
@@ -111,7 +111,7 @@ export const TodoSlice = createSlice({
     console.log("edit state.selectedTodo", state.selectedTodo)
     state.selectedTodo = {...state.selectedTodo, data:{Title: state.selectedTodo?.data?.Title, Description:action.payload}}
   if (state?.selectedTodo !== undefined){
-    state.value = state.value.map((el, i)=>
+    state.value = state.value.map((el, )=>
 
       (
         el.Id === state.selectedTodo?.Id ? state.selectedTodo : {...el}

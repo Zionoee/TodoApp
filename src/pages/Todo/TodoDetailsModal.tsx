@@ -8,7 +8,7 @@ export const TodoDetails = (props:any)=>{
   const selectedTodo = useSelector((store: any)=>store.TodoState.selectedTodo)
     const {todoData, showDetails, setShowDetails} = props
     const dispatch = useDispatch()
-    const {EditDescription, DeleteTodo, setSelectedTodoNull} = TodoActions
+    const {EditDescription, DeleteTodo, } = TodoActions
 
   useEffect(()=>{
     

@@ -1,16 +1,16 @@
-import {AnimatePresence, motion, useAnimation} from "framer-motion"
+import {AnimatePresence, motion,} from "framer-motion"
 import { TodoDetails } from "./TodoDetailsModal"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, } from "react-redux"
 import { TodoActions } from "../../store/StateSlices"
 
  
 
 export const TodoItemLayout = (props:any)=>{
     const dispatch = useDispatch()
-    const selectedTodo = useSelector((store:any)=>store.TodoState.selectedTodo)
+    // const selectedTodo = useSelector((store:any)=>store.TodoState.selectedTodo)
     const {SelectTodo} = TodoActions
     const {todoData, showDetailsModal, setShowDetailsModal} = props
-    const controls = useAnimation()
+    // const controls = useAnimation()
     const ballRadius : number = 22.15
     const distance : number = -975
     const rotationAngle : number = ( distance /(ballRadius * 2 * Math.PI)) * 360

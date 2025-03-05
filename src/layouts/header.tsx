@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { sideBarActions } from "../store/StateSlices"
 export const Header = ()=>{
     const theme = useSelector((store:any)=> store.themeState.value)
-    const sideBarState = useSelector((store:any)=> store.sideBarState.value)
+    // const sideBarState = useSelector((store:any)=> store.sideBarState.value)
     const dispatch = useDispatch()
-    const {changeSideBarState, setSideBarStateFalse} = sideBarActions
+    const { setSideBarStateFalse} = sideBarActions
 
 
 //     const handleClick = ()=>{
