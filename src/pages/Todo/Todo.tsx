@@ -16,25 +16,27 @@ export const Todo = () => {
     setModalIsOpen(true);
   };
 
-  const Data =
-    TodoData?.length > 0
-      ? TodoData.map((todo: any) => {
-          return (
-            <TodoItemLayout
-              key={todo.Id}
-              todoData={todo}
-              showDetailsModal={showDetailsModal}
-              setShowDetailsModal={setShowDetailsModal}
-            />
-          );
-        })
-      : [];
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
-  const indexOfLastItem = itemsPerPage * currentPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = Data.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(Data.length / itemsPerPage);
+  // const Data =
+  //   TodoData?.length > 0
+  //     ? TodoData.map((todo: any) => {
+  //         return (
+  //           <TodoItemLayout
+  //             key={todo.Id}
+  //             todoData={todo}
+  //             showDetailsModal={showDetailsModal}
+  //             setShowDetailsModal={setShowDetailsModal}
+  //           />
+  //         );
+  //       })
+  //     : [];
+
+   const [currentPage, setCurrentPage] = useState(1);
+   const itemsPerPage = 4;
+   const indexOfFirstItem = itemsPerPage * (currentPage-1);
+   const indexOfLastItem = indexOfFirstItem + itemsPerPage ;
+   
+   const currentItems = TodoData.slice(indexOfFirstItem, indexOfLastItem);
+   const totalPages = Math.ceil(TodoData.length / itemsPerPage);
 
   useEffect(() => {
     console.log("local.getItem", localStorage.getItem("TodoItem"));
@@ -47,21 +49,21 @@ export const Todo = () => {
   const clearAllTodos = () => {
     dispatch(ClearTodo());
   };
-  const handleNext = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
-    }
-  };
-  const handlePrev = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  };
+   const handleNext = () => {
+     if (currentPage < totalPages) {
+       setCurrentPage((prev) => prev + 1);
+     }
+   };
+   const handlePrev = () => {
+     if (currentPage > 1) {
+       setCurrentPage((prev) => prev - 1);
+     }
+   };
 
-  console.log(currentPage);
-  console.log(totalPages);
-  console.log(Data.length);
-  //  if   ((indexOfLastItem % itemsPerPage) === 0 && currentPage !== totalPages ){
+   console.log('this is currentPage',currentPage);
+   console.log('this is totalPages',totalPages);
+  // console.log(Data.length);
+  // //  if   ((indexOfLastItem % itemsPerPage) === 0 && currentPage !== totalPages ){
   //   setCurrentPage((prev)=> prev + 1)
   //  }
   return (
@@ -105,11 +107,17 @@ export const Todo = () => {
             }   w-screen h-fit min-h-[442px]  py-20 px-15 mt-15`}
           >
             {/* {Array.from({length:1}, ()=>{return()})} */}
-            {currentItems.length > 0 ? (
-              currentItems.map((item: any, index: any) => (
-                <span key={index}>{item}</span>
-              ))
-            ) : (
+            {currentItems?.length > 0
+      ? currentItems.map((todo: any) => {
+          return (
+            <TodoItemLayout
+            key={todo.Id}
+            todoData={todo}
+            showDetailsModal={showDetailsModal}
+            setShowDetailsModal={setShowDetailsModal}
+          /> 
+          );
+        }) : (
               <div className=" w-fit flex justify-center items-center">
                 <p className=" cursor-pointer text-4xl font-bold font-mono text-stone-600">
                   No Todo Created
@@ -120,19 +128,32 @@ export const Todo = () => {
           </div>
         </div>
        {
-        <div className={`${ theme === "DarkTheme" ? "bg-gray-800" : 'bg-stone-100'}  w-full flex justify-center gap-x-10`}>
-        <button className={`${theme === "DarkTheme" ? "bg-purple-800 text-zinc-400 hover:text-zinc-100":"bg-purple-400  " } hover:scale-110 hover:shadow-2xl transition-all duration-300  text-zinc-100 cursor-pointer font-bold  rounded-full px-6 py-2 `} disabled={currentPage === totalPages} onClick={handleNext}>
-              next
-            </button>
-            <button disabled={currentPage === 1} onClick={handlePrev}
-            className={`${theme === "DarkTheme" ? "bg-purple-800 text-zinc-400 hover:text-zinc-100":"bg-purple-400  " } hover:scale-110 hover:shadow-2xl transition-all duration-300  text-zinc-100 cursor-pointer font-bold  rounded-full px-6 py-2 `}
-            >
-              prev
-            </button>
-        </div>
+         <div className={`${ theme === "DarkTheme" ? "bg-gray-800" : 'bg-stone-100'} pb-7 w-full flex justify-center gap-x-10`}>
+        
+             <button disabled={currentPage === 1} onClick={handlePrev}
+             className={`${theme === "DarkTheme" ? `${currentPage === 1 ?"bg-purple-800 text-zinc-400" :"bg-purple-400 text-zinc-100"} `:`${currentPage === 1 ?"bg-purple-300" : "bg-purple-400" }` } hover:scale-110 hover:shadow-2xl transition-all duration-300  text-zinc-100 cursor-pointer font-bold  rounded-full px-7 py-2 `}
+             >
+               Prev
+             </button>
+             <button className={`${theme === "DarkTheme" ? `${currentPage >= totalPages  ? "bg-purple-800 text-zinc-400" :"text-zinc-100 bg-purple-400"}`:` ${currentPage >= totalPages ? "bg-purple-300" :"bg-purple-400"}` } hover:scale-110 hover:shadow-2xl transition-all duration-300  text-zinc-100 cursor-pointer font-bold  rounded-full px-6 py-2 `} 
+             disabled={currentPage === totalPages} onClick={handleNext}>
+               Next
+             </button>
+         </div>
        }
       </div>
     </div>
   );
 };
 
+
+
+
+
+        // currentItems.length > 0 ? (
+        //   currentItems.map((item: any, index: any) => (
+        //     <span key={index}>{item}</span>
+        //   ))
+        // )
+
+        

@@ -99,7 +99,7 @@ const passSidebarVal = ()=>{
     initial={sideBarAnimations.bar.initial}
     animate= {sideBarAnimations.bar.animate}
     transition={sideBarAnimations.bar.transition}
-    className="z-30 fixed h-screen w-39 bg-gray-900 flex flex-col justify-between items-center">
+    className="z-30 fixed h-[100dvh] w-39 bg-gray-900 flex flex-col justify-between items-center">
       <div
       onMouseEnter={()=>{setEnlargeIcon(true)}}
       onMouseLeave={()=>{setEnlargeIcon(false)}}
@@ -152,3 +152,6 @@ const passSidebarVal = ()=>{
 // div1 before div2 but if they have a classname of relative or fixed or absolute or sticky e.t.c
 // then setting a higer z index places one above the other, setting 
 // same z-index in this case makes them behave in default mode i.e one after the other
+// note h-screen is same as h-[100vh] which sets the hieght to viewport height but for mobile devices
+// the browsers header takes some height and so it would seem that your content goes beyond 100vh
+// thats why we use 100dvh the d is for dynamically  reccalculating viewport height
