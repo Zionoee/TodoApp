@@ -100,7 +100,7 @@ export const Todo = () => {
 
         <div>
           <div
-            className={`flex flex-wrap flex-row-reverse justify-center gap-10  ${
+            className={`flex flex-wrap flex-row-reverse justify-center gap-5  ${
               theme === "DarkTheme"
                 ? "bg-gray-800 "
                 : "bg-stone-100 border-t-stone-200 border-t-1"
@@ -119,7 +119,7 @@ export const Todo = () => {
           );
         }) : (
               <div className=" w-fit flex justify-center items-center">
-                <p className=" cursor-pointer text-4xl font-bold font-mono text-stone-600">
+                <p className=" cursor-pointer text-2xl md:text-3xl lg:text-4xl font-bold font-mono text-stone-600">
                   No Todo Created
                 </p>
               </div>
@@ -128,7 +128,7 @@ export const Todo = () => {
           </div>
         </div>
        {
-         <div className={`${ theme === "DarkTheme" ? "bg-gray-800" : 'bg-stone-100'} pb-7 w-full flex justify-center gap-x-10`}>
+         <div className={`${ theme === "DarkTheme" ? "bg-gray-800" : 'bg-stone-100'} pb-15 w-full flex justify-center gap-x-10`}>
         
              <button disabled={currentPage === 1} onClick={handlePrev}
              className={`${theme === "DarkTheme" ? `${currentPage === 1 ?"bg-purple-800 text-zinc-400" :"bg-purple-400 text-zinc-100"} `:`${currentPage === 1 ?"bg-purple-300" : "bg-purple-400" }` } hover:scale-110 hover:shadow-2xl transition-all duration-300  text-zinc-100 cursor-pointer font-bold  rounded-full px-7 py-2 `}
