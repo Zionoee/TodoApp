@@ -66,7 +66,7 @@ export const TodoItemLayout = (props:any)=>{
         className=" flex-none
         cursor-pointer hover:scale-105 hover:shadow-2xl
          transition-all duration-150 flex justify-center 
-         items-center rounded-full  min-w-35 h-35  aspect-[1/1]  whitespace-normal sm:w-50 sm:h-50
+         items-center rounded-full  min-w-20 h-20  aspect-[1/1]  whitespace-normal sm:w-50 sm:h-50
           md:w-60 md:h-60  bg-gradient-to-b from-zinc-200
            via-stone-400   text-white">
             <span className="font-mono font-semibold text-zinc-600 text-lg text-center">
